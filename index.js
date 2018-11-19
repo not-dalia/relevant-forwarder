@@ -2,7 +2,7 @@ require("dotenv").config();
 const http = require("http");
 const httpProxy = require("http-proxy");
 const proxy = httpProxy.createProxyServer({});
-const server = http.createServer().listen(3123);
+const server = http.createServer().listen(process.env.PORT || 3123);
 
 const baseUrl = "api.github.com";
 
