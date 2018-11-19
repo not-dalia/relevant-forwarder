@@ -24,6 +24,16 @@ server.on("request", (req, res) => {
   proxy.web(req, res, { target: `https://${baseUrl}` });
 });
 
+server.on('error', function (e) {
+  // Handle your error here
+  console.log(e);
+});
+
+proxy.on('error', function (e) {
+  // Handle your error here
+  console.log(e);
+});
+
 proxy.on('proxyRes', function(proxyRes, req, res) {
   res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
   res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
