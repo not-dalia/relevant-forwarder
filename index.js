@@ -14,13 +14,15 @@ const allowedOrigins = [
 
 server.on("request", (req, res) => {
   let isOriginAllowed = checkRequestOrigin(req.headers.origin);
-  if (!isOriginAllowed) {
+  if (!isOriginAllowed || !/^\/repos\/not-dalia\/relevant-space\/contents\/_comments/.test(req.url) || req.method == 'DELETE' || req.headers['access-control-request-method'] == 'DELETE') {
     res.statusCode = 403;
     res.end();
     return;
   }
   req.headers.host = baseUrl;
   req.headers.Authorization = `token ${process.env.GH_PAT}`;
+  console.log('worked');
+  res.end();
   proxy.web(req, res, { target: `https://${baseUrl}` });
 });
 
