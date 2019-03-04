@@ -9,7 +9,8 @@ const baseUrl = "api.github.com";
 // const allowedOrigins = [ RegExp('^(www\.){0,}not-dalia.github.io/relevant-space/*'),  ];
 const allowedOrigins = [
   RegExp("^http(?:s)?:\/\/not-dalia.github.io/*"),
-  RegExp("^http(?:s)?:\/\/localhost:4000/*")
+  RegExp("^http(?:s)?:\/\/localhost:4000/*"),
+  RegExp("^http(?:s)?:\/\/(?:www\.)relevant.space/*")
 ];
 
 server.on("request", (req, res) => {
