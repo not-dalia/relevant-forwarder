@@ -23,7 +23,7 @@ server.on("request", (req, res) => {
   req.headers.host = baseUrl;
   req.headers.Authorization = `token ${process.env.GH_PAT}`;
   console.log('worked');
-  res.end();
+  //res.end();
   proxy.web(req, res, { target: `https://${baseUrl}` });
 });
 
